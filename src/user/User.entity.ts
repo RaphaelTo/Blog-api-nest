@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class User {
@@ -17,9 +23,9 @@ export class User {
   @Column({ type: 'date', nullable: false })
   public birthday: string;
 
-  @Column({ type: 'datetime', nullable: false })
+  @CreateDateColumn({ type: 'datetime' })
   public createAt: string;
 
-  @Column({ type: 'datetime', nullable: false })
+  @UpdateDateColumn({ type: 'datetime' })
   public updateAt: string;
 }

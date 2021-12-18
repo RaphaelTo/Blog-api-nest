@@ -4,7 +4,10 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
+import { RulesAccount } from '../rulesAccount/rulesAccount.entity';
+import { User } from '../user/User.entity';
 
 @Entity()
 export class Account {
@@ -25,4 +28,10 @@ export class Account {
 
   @UpdateDateColumn({ type: 'datetime' })
   public updateAt: Date;
+
+  @ManyToOne(() => RulesAccount, (rulesAccount) => rulesAccount.idRulesAccount)
+  public rulesAccount: RulesAccount;
+
+  @ManyToOne(() => User, (user) => user.idUser)
+  public user: User;
 }

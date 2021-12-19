@@ -1,26 +1,14 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Account } from '../account/account.entity';
+import { DateEntity } from '../config/date.entity';
 
 @Entity()
-export class OldPassword {
+export class OldPassword extends DateEntity {
   @PrimaryGeneratedColumn('uuid')
   public idOldPassword: string;
 
   @Column()
   public password: string;
-
-  @CreateDateColumn()
-  public createAt: Date;
-
-  @UpdateDateColumn()
-  public updateAt: Date;
 
   @ManyToOne(() => Account, (account) => account.idAccount)
   public account: Account;

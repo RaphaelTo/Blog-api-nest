@@ -1,13 +1,8 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { DateEntity } from '../config/date.entity';
 
 @Entity()
-export class User {
+export class User extends DateEntity {
   @PrimaryGeneratedColumn('uuid')
   public idUser: string;
 
@@ -22,10 +17,4 @@ export class User {
 
   @Column({ type: 'date', nullable: false })
   public birthday: string;
-
-  @CreateDateColumn({ type: 'datetime' })
-  public createAt: string;
-
-  @UpdateDateColumn({ type: 'datetime' })
-  public updateAt: string;
 }

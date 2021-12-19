@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { DateEntity } from '../config/date.entity';
+import { Article } from '../article/article.entity';
 
 @Entity()
 export class Tag extends DateEntity {
@@ -8,4 +9,7 @@ export class Tag extends DateEntity {
 
   @Column({ type: 'varchar', length: 45 })
   public tag: string;
+
+  @ManyToMany(() => Article, (article) => article.tag)
+  public article: Article[];
 }

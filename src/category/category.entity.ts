@@ -6,6 +6,6 @@ export class Category extends DateEntity {
   @PrimaryGeneratedColumn('uuid')
   public idCategory: string;
 
-  @Column({ type: 'varchar', length: 45 })
+  @Column({ type: 'varchar', length: 45, nullable: false })
   public category: string;
 }

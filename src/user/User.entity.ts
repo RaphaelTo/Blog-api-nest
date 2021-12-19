@@ -12,7 +12,7 @@ export class User extends DateEntity {
   @Column({ type: 'varchar', length: 30, nullable: false })
   public firstname: string;
 
-  @Column()
+  @Column({ type: 'text', nullable: true })
   public profilPicture: string;
 
   @Column({ type: 'date', nullable: false })

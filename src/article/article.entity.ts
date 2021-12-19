@@ -14,19 +14,21 @@ export class Article {
   @PrimaryGeneratedColumn('uuid')
   public idArticle: string;
 
-  @Column({ type: 'varchar', length: 45 })
+  @Column({ type: 'varchar', length: 45, nullable: false })
   public title: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
   public description: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: false })
   public content: string;
 
-  @ManyToOne(() => Category, (category) => category.idCategory)
+  @ManyToOne(() => Category, (category) => category.idCategory, {
+    nullable: false,
+  })
   public category: string;
 
-  @ManyToOne(() => Account, (account) => account.idAccount)
+  @ManyToOne(() => Account, (account) => account.idAccount, { nullable: false })
   public account: string;
 
   @ManyToMany(() => Tag, (tag) => tag.article)

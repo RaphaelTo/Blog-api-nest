@@ -7,9 +7,9 @@ export class Tag extends DateEntity {
   @PrimaryGeneratedColumn('uuid')
   public idTag: string;
 
-  @Column({ type: 'varchar', length: 45 })
+  @Column({ type: 'varchar', length: 45, nullable: false })
   public tag: string;
 
-  @ManyToMany(() => Article, (article) => article.tag)
+  @ManyToMany(() => Article, (article) => article.tag, { nullable: false })
   public article: Article[];
 }

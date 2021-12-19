@@ -7,9 +7,9 @@ export class ResetPassword extends DateEntity {
   @PrimaryGeneratedColumn('uuid')
   public idResetPassword: string;
 
-  @Column({ type: 'varchar', length: 4 })
+  @Column({ type: 'varchar', length: 4, nullable: false })
   public key: string;
 
-  @Column({ type: 'boolean', nullable: false })
+  @Column({ type: 'boolean', nullable: false, default: true })
   public isEnable: boolean;
 }

@@ -8,18 +8,22 @@ export class Account extends DateEntity {
   @PrimaryGeneratedColumn('uuid')
   public idAccount: string;
 
-  @Column({ type: 'varchar', length: 45 })
+  @Column({ type: 'varchar', length: 45, nullable: false })
   public email: string;
 
-  @Column({ type: 'varchar', length: 45 })
+  @Column({ type: 'varchar', length: 45, nullable: false })
   public password: string;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', default: false })
   public isActivate: boolean;
 
-  @ManyToOne(() => RulesAccount, (rulesAccount) => rulesAccount.idRulesAccount)
+  @ManyToOne(
+    () => RulesAccount,
+    (rulesAccount) => rulesAccount.idRulesAccount,
+    { nullable: false },
+  )
   public rulesAccount: RulesAccount;
 
-  @ManyToOne(() => User, (user) => user.idUser)
+  @ManyToOne(() => User, (user) => user.idUser, { nullable: false })
   public user: User;
 }

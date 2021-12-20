@@ -7,7 +7,7 @@ export class Rank extends DateEntity {
   @PrimaryGeneratedColumn('uuid')
   public idRank: string;
 
-  @Column({ type: 'tinyint', nullable: false })
+  @Column({ type: 'smallint', nullable: false })
   public ranking: string;
 
   @ManyToOne(() => Article, (article) => article.idArticle, { nullable: false })

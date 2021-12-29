@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
 import { RulesAccount } from '../rulesAccount/rulesAccount.entity';
 import { User } from '../user/User.entity';
 import { DateEntity } from '../config/date.entity';
@@ -11,7 +18,7 @@ export class Account extends DateEntity {
   @Column({ type: 'varchar', length: 45, nullable: false })
   public email: string;
 
-  @Column({ type: 'varchar', length: 45, nullable: false })
+  @Column({ type: 'text', nullable: false })
   public password: string;
 
   @Column({ type: 'boolean', default: false })
@@ -24,6 +31,7 @@ export class Account extends DateEntity {
   )
   public rulesAccount: RulesAccount;
 
-  @ManyToOne(() => User, (user) => user.idUser, { nullable: false })
+  @OneToOne(() => User)
+  @JoinColumn()
   public user: User;
 }

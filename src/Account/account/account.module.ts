@@ -27,5 +27,6 @@ import { AuthModule } from '../../auth/auth.module';
       useClass: SigninAction,
     },
   ],
+  exports: [AccountService],
 })
 export class AccountModule {}

@@ -6,6 +6,7 @@ import { ForgetPasswordAction } from './actions/forgetPassword.action';
 import { UtilsModule } from '../../utils/utils.module';
 import { ResetPassword } from './resetPassword.entity';
 import { AccountModule } from '../account/account.module';
+import { VerifyTokenKeyAction } from './actions/verifyTokenKey.action';
 
 @Module({
   imports: [
@@ -14,6 +15,6 @@ import { AccountModule } from '../account/account.module';
     AccountModule,
   ],
   controllers: [ResetPasswordController],
-  providers: [ResetPasswordService, ForgetPasswordAction],
+  providers: [ResetPasswordService, ForgetPasswordAction, VerifyTokenKeyAction],
 })
 export class ResetPasswordModule {}

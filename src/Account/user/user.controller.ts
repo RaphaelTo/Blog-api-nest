@@ -9,12 +9,15 @@ import {
   NotFoundException,
   Put,
   Delete,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { User } from './User.entity';
 import { UserService } from './user.service';
 import { CreateUserDto } from './create-user.dto';
 import { UpdateUserDto } from './update-user.dto';
 import { DeleteResult } from 'typeorm';
+import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
 
 @ApiTags('User')
 @Controller('user')
@@ -23,16 +26,16 @@ export class UserController {
 
   @ApiResponse({ status: 200, description: 'return all user' })
   @ApiResponse({ status: 404, description: 'throw error when 0 user found' })
+  @UseGuards(JwtAuthGuard)
   @Get('/all')
-  public async allUser(): Promise<User[]> {
+  public async allUser(@Request() req): Promise<User[]> {
     try {
-      const findUser = await this.userService.findAll();
-
-      if (!findUser.length) {
+      const users = await this.userService.findAll();
+      if (!users.length) {
         throw new NotFoundException('no user exist');
       }
 
-      return findUser;
+      return users;
     } catch (err) {
       throw new NotFoundException(err);
     }
@@ -46,13 +49,13 @@ export class UserController {
   @Get('/byId/:id')
   public async findUserById(@Param('id') idUser: string): Promise<User> {
     try {
-      const getUser = await this.userService.findById(idUser);
+      const user = await this.userService.findById(idUser);
 
-      if (!getUser) {
+      if (!user) {
         throw new NotFoundException('user doesnt exist');
       }
 
-      return getUser;
+      return user;
     } catch (e) {
       throw new NotFoundException(e);
     }
@@ -67,9 +70,9 @@ export class UserController {
   @Post()
   public async addUser(@Body() body: CreateUserDto) {
     try {
-      const createUser = await this.userService.create(body);
+      const user = await this.userService.create(body);
 
-      return createUser;
+      return user;
     } catch {
       throw new BadRequestException();
     }
@@ -87,12 +90,12 @@ export class UserController {
   @ApiParam({ name: 'id', type: 'string' })
   @Put('byId/:id')
   public async updateUser(
-    @Body() user: UpdateUserDto,
+    @Body() userParam: UpdateUserDto,
     @Param('id') idUser: string,
   ) {
     try {
-      const updateUser = await this.userService.update(user, idUser);
-      return updateUser;
+      const user = await this.userService.update(userParam, idUser);
+      return user;
     } catch (e) {
       throw new BadRequestException(e);
     }
@@ -114,13 +117,13 @@ export class UserController {
   @Delete('byId/:id')
   public async deleteUser(@Param('id') idUser: string): Promise<DeleteResult> {
     try {
-      const deleteUser = await this.userService.delete(idUser);
+      const user = await this.userService.delete(idUser);
 
-      if (deleteUser.raw === 0) {
+      if (user.raw === 0) {
         throw new NotFoundException('user doesnt exist');
       }
 
-      return deleteUser;
+      return user;
     } catch (e) {
       throw new BadRequestException(e);
     }

@@ -5,7 +5,7 @@ import { UserService } from '../../user/user.service';
 import { RulesAccountService } from '../../rulesAccount/rulesAccount.service';
 import { User } from '../../user/User.entity';
 import { Account } from '../account.entity';
-import { CreateAccountDto } from '../create-account.dto';
+import { CreateAccountDto } from '../dto/create-account.dto';
 
 type findOneByEmail = { email: string };
 

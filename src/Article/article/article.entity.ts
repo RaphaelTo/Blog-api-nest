@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Category } from '../category/category.entity';
-import { Account } from '../account/account.entity';
+import { Account } from '../../Account/account/account.entity';
 import { Tag } from '../tag/tag.entity';
 
 @Entity()

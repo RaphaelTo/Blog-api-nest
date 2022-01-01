@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Account } from '../account/account.entity';
-import { DateEntity } from '../config/date.entity';
+import { DateEntity } from '../../config/date.entity';
 
 @Entity()
 export class OldPassword extends DateEntity {

@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
-import { Account } from '../account/account.entity';
-import { Article } from '../article/article.entity';
-import { Category } from '../category/category.entity';
-import { Comment } from '../comment/comment.entity';
-import { CommentRecursive } from '../commentRecursive/commentRecursive.entity';
-import { OldPassword } from '../oldPassword/oldPassword.entity';
-import { Rank } from '../rank/rank.entity';
-import { ResetPassword } from '../resetPassword/resetPassword.entity';
-import { RulesAccount } from '../rulesAccount/rulesAccount.entity';
-import { Tag } from '../tag/tag.entity';
-import { User } from '../user/User.entity';
+import { Account } from '../Account/account/account.entity';
+import { Article } from '../Article/article/article.entity';
+import { Category } from '../Article/category/category.entity';
+import { Comment } from '../Article/comment/comment.entity';
+import { CommentRecursive } from '../Article/commentRecursive/commentRecursive.entity';
+import { OldPassword } from '../Account/oldPassword/oldPassword.entity';
+import { Rank } from '../Article/rank/rank.entity';
+import { ResetPassword } from '../Account/resetPassword/resetPassword.entity';
+import { RulesAccount } from '../Account/rulesAccount/rulesAccount.entity';
+import { Tag } from '../Article/tag/tag.entity';
+import { User } from '../Account/user/User.entity';
 
 @Injectable()
 export class DatabaseService implements TypeOrmOptionsFactory {

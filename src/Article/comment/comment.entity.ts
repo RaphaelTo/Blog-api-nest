@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { DateEntity } from '../config/date.entity';
+import { DateEntity } from '../../config/date.entity';
 import { CommentRecursive } from '../commentRecursive/commentRecursive.entity';
 
 @Entity()

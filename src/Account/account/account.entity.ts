@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { RulesAccount } from '../rulesAccount/rulesAccount.entity';
 import { User } from '../user/User.entity';
-import { DateEntity } from '../config/date.entity';
+import { DateEntity } from '../../config/date.entity';
 
 @Entity()
 export class Account extends DateEntity {
